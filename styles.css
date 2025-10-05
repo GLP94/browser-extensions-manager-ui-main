@@ -1,0 +1,280 @@
+:root{
+    --Neutral-900: hsl(227, 75%, 14%);
+    --Neutral-800: hsl(226, 25%, 17%);
+    --Neutral-700: hsl(225, 23%, 24%);
+    --Neutral-600: hsl(226, 11%, 37%);
+    --Neutral-300: hsl(0, 0%, 78%);
+    --Neutral-200: hsl(217, 61%, 90%);
+    --Neutral-100: hsl(0, 0%, 93%);
+    --Neutral-0: hsl(200, 60%, 99%);
+    --Red-400: hsl(3, 86%, 64%);
+    --Red-500: hsl(3, 71%, 56%);
+    --Red-700: hsl(3, 77%, 44%);
+    --Light-Gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --Dark-Gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+    }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border;
+}
+
+html {
+    min-height: 100%;
+}
+
+body{
+    font-family: "Noto Sans", "sans-serif";
+    margin: 1rem;
+    height: 100%;
+
+    &.light{
+    background: var(--Light-Gradient);
+    --bg: var(--Neutral-0);
+    --text: var(--Neutral-900);
+    --text-hover: var(--Neutral-600);
+    --text-alt: var(--Neutral-0);
+    --border: var(--Neutral-200);
+    --bg-button: var(--Neutral-0);
+    --bg-button-alt: var(--Neutral-300);
+    --bg-button-theme: var(--Neutral-100);
+    --hover: var(--Neutral-300);
+    --hover--buttons: var(--Neutral-0);
+    --hover-alt: var(--Red-500);
+    }
+
+    &.dark{
+    background: var(--Dark-Gradient);
+    --bg: var(--Neutral-800);
+    --text: var(--Neutral-0);
+    --text-alt: var(--Neutral-900);
+    --text-hover: var(--Neutral-0);
+    --border: var(--Neutral-600);
+    --bg-button: var(--Neutral-700);
+    --bg-button-alt: var(--Neutral-600);
+    --bg-button-theme: var(--Neutral-700);
+    --hover: var(--Neutral-600);
+    --hover--buttons: var(--Neutral-600);
+    --hover-alt: var(--Red-500);
+    }
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 0.75rem;
+    color: var(--text);
+    margin-bottom: 2rem;
+    box-shadow: 2px 4px 4px -5px rgba(0, 0, 0, 0.397);
+
+    button{
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        background: var(--bg-button-theme);
+        border: none;
+        display: flex;
+
+        &:hover{
+            background: var(--hover);
+        }
+
+        &:focus{
+        outline: 2px solid var(--Red-700);
+        }
+    }
+}
+
+.buttonssec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text);
+
+    .buttons{
+        margin: 1.5rem 1rem;
+
+        label{
+            position: relative;
+            margin: 0 0.5rem;
+            background-color: var(--bg-button);
+            border-radius: 2rem;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+
+            &:hover{
+                background: var(--hover--buttons);
+                color: var(--text-hover);
+            }
+
+            &:has(input:checked){
+                background: var(--Red-400);
+                color: var(--text-alt);
+                border: 1px solid var(--Red-400);
+
+                &:hover{
+                    background: var(--Red-500);
+                }
+            }
+
+            input{
+                position: absolute;
+                appearance: none;
+                inset: 0;
+                border-radius: 2rem;
+                overflow: hidden;
+
+                &:focus{
+                    outline: 2px solid var(--Red-700);
+                }
+            }
+        }
+    }
+}
+
+.applist {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    list-style: none;
+    margin-top: 1rem;
+    
+
+    li{
+        border: 1px solid var(--border);
+        background-color: var(--bg);
+        color: var(--text);
+        padding: 1rem;
+        border-radius: 1rem;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 2px 4px 4px -5px rgba(0, 0, 0, 0.397);
+
+        .infowrap{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        font-size: 0.9rem;
+
+            p{
+                opacity: 0.8;
+            }
+        }
+
+        .handlebuttons{
+            display: flex;
+            justify-content: space-between;
+
+            button{
+                background: transparent;
+                border: 1px solid var(--border);
+                color: var(--text);
+                border-radius: 1rem;
+                padding: 0.5rem;
+
+                &:hover{
+                    background: var(--hover-alt);
+                    border: 1px solid var(--Red-400);
+                    color: var(--text-alt);
+                }
+
+                &:focus{
+                    outline: 2px solid var(--Red-700);
+                }
+            }
+
+            .toggle {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                input{
+                    position: absolute;
+                    appearance: none;
+                    inset: 0;
+                    border-radius: 2rem;
+                    overflow: hidden;
+                    height: 22px;
+                    width: 37px;
+                    top: 6px;
+                    left: -1px;
+
+                    &:checked + .slider{
+                        background-color: var(--Red-400);
+
+                        &:hover{
+                        background: var(--Red-500);
+                    }
+                    }
+
+                    &:checked + .slider:before{
+                        transform: translateX(15px);
+                    }
+
+                    &:focus{
+                    outline: 2px solid var(--Red-700);
+                    }
+                }
+
+                .slider{
+                position: relative;
+                display: block;
+                cursor: pointer;
+                background-color: var(--bg-button-alt);
+                border-radius: 5rem;
+                width: 35px;
+                height: 20px;
+
+                    &:before{
+                        content: "";
+                        position: absolute;
+                        top: 2.5px;
+                        left: 2.5px;
+                        height: 15px;
+                        width: 15px;
+                        background-color: white;
+                        border-radius: 50%;
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+
+    body{
+    margin: 2rem;
+    }
+
+    .applist{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .buttonssec{
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    body{
+    margin: 2.5rem 5rem;
+    }
+
+    .applist{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
